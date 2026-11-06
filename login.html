@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign In & Register | Talanta Stadium</title>
+
+    <meta name="theme-color" content="#101010">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --black: #101010;
+            --red: #bb1825;
+            --green: #087443;
+            --white: #ffffff;
+            --muted: #6b756f;
+            --border: #dfe7e1;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "DM Sans", sans-serif;
+            color: var(--black);
+            background: var(--white);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        .flag-stripe {
+            height: 7px;
+            background: linear-gradient(to right,
+                    #101010 0%,
+                    #101010 33.33%,
+                    #bb1825 33.33%,
+                    #bb1825 66.66%,
+                    #087443 66.66%,
+                    #087443 100%);
+        }
+
+        .auth-layout {
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+            min-height: calc(100vh - 7px);
+        }
+
+        /* LEFT IMAGE PANEL */
+
+        .auth-visual {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 700px;
+            padding: 42px 52px 30px;
+            color: var(--white);
+
+            background-color: #123b2b;
+
+            background-image:
+                linear-gradient(180deg,
+                    rgba(0, 0, 0, .7) 0%,
+                    rgba(0, 0, 0, .2) 35%,
+                    rgba(0, 0, 0, .9) 100%),
+                url("talanta-stadium.png");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            width: fit-content;
+            font-family: "Outfit", sans-serif;
+            font-size: 25px;
+            font-weight: 900;
+            color: var(--white);
+        }
+
+        .brand-icon {
+            display: grid;
+            place-items: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: var(--red);
+            font-size: 22px;
+        }
+
+        .brand span:last-child span {
+            color: #ff6470;
+        }
+
+        .visual-content {
+            max-width: 570px;
+            padding: 60px 0;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #ff9da5;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .visual-content h1 {
+            margin: 0 0 24px;
+            font-family: "Outfit", sans-serif;
+            font-size: clamp(46px, 5vw, 78px);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2.5px;
+        }
+
+        .visual-content h1 span {
+            color: #ff6470;
+        }
+
+        .visual-content p {
+            max-width: 420px;
+            margin: 0 0 30px;
+            color: #e1e9e4;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .visual-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .visual-features span {
+            color: #e4efe7;
+        }
+
+        .visual-footer {
+            margin: 0;
+            color: #c7d5cc;
+            font-size: 12px;
+        }
+
+        /* RIGHT PANEL */
+
+        .auth-panel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 30px;
+        }
+
+        .auth-box {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .mobile-brand {
+            display: none;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 35px;
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .back-link:hover {
+            color: var(--green);
+        }
+
+        .form-eyebrow {
+            color: var(--green);
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .form-heading {
+            margin: 10px 0 10px;
+            font-family: "Outfit", sans-serif;
+            font-size: clamp(30px, 3vw, 40px);
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .form-description {
+            margin: 0 0 27px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* TABS */
+
+        .auth-tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            margin-bottom: 27px;
+            padding: 5px;
+            border-radius: 12px;
+            background: #f1f4f2;
+        }
+
+        .auth-tab {
+            min-height: 46px;
+            border: 0;
+            border-radius: 9px;
+            background: transparent;
+            color: #65736a;
+            font-size: 14px;
+            font-weight: 800;
+            transition: .2s;
+        }
+
+        .auth-tab.active {
+            background: var(--red);
+            color: white;
+            box-shadow: 0 4px 12px rgba(187, 24, 37, .16);
+        }
+
+        /* FORMS */
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .field label {
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .input-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrap input {
+            width: 100%;
+            height: 53px;
+            padding: 0 72px 0 16px;
+            border: 1.5px solid var(--border);
+            border-radius: 11px;
+            outline: none;
+            background: #fafcfb;
+            color: var(--black);
+            font-size: 14px;
+            transition: .2s;
+        }
+
+        .input-wrap input:focus {
+            border-color: var(--green);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(8, 116, 67, .1);
+        }
+
+        .input-wrap input[aria-invalid="true"] {
+            border-color: var(--red);
+        }
+
+        .input-wrap input::placeholder {
+            color: #9aa79e;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            padding: 8px;
+            border: none;
+            background: transparent;
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .field-error {
+            color: var(--red);
+            font-size: 12px;
+        }
+
+        .field-error:empty {
+            display: none;
+        }
+
+        .field-hint {
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #59675e;
+            font-size: 12px;
+            line-height: 1.6;
+            cursor: pointer;
+        }
+
+        .checkbox-label input {
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+            margin-top: 2px;
+            accent-color: var(--green);
+        }
+
+        .checkbox-label a {
+            color: var(--green);
+            font-weight: 800;
+        }
+
+        .submit-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            min-height: 54px;
+            padding: 13px 18px;
+            border: 0;
+            border-radius: 11px;
+            background: var(--red);
+            color: white;
+            font-size: 14px;
+            font-weight: 900;
+            transition: .2s;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            background: #94121c;
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:disabled {
+            opacity: .65;
+            cursor: wait;
+        }
+
+        .form-message {
+            padding: 13px 15px;
+            border: 1px solid #efb7bc;
+            border-radius: 10px;
+            background: #fff0f1;
+            color: #9a1c26;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .form-message.success {
+            border-color: #a6d8b9;
+            background: #e7f6ec;
+            color: #075d36;
+        }
+
+        .switch-prompt {
+            margin-top: 25px;
+            padding-top: 23px;
+            border-top: 1px solid #e7ede8;
+            color: var(--muted);
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .switch-prompt button {
+            border: 0;
+            background: transparent;
+            color: var(--green);
+            font-weight: 900;
+            cursor: pointer;
+        }
+
+        .copyright {
+            margin-top: 35px;
+            color: #9aa79e;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+            .auth-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .auth-visual {
+                display: none;
+            }
+
+            .auth-panel {
+                min-height: calc(100vh - 7px);
+                padding: 35px 20px;
+            }
+
+            .mobile-brand {
+                display: inline-flex;
+                margin-bottom: 28px;
+                color: var(--black);
+            }
+
+            .mobile-brand span:last-child span {
+                color: var(--red);
+            }
+        }
+
+        @media (max-width: 380px) {
+            .auth-panel {
+                padding: 25px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- KENYAN FLAG STRIPE -->
+    <div class="flag-stripe"></div>
+
+    <main class="auth-layout">
+
+        <!-- STADIUM PANEL -->
+        <section class="auth-visual">
+
+            <a href="index.html" class="brand">
+                <span class="brand-icon">⚽</span>
+                <span>Talanta<span>Pass</span></span>
+            </a>
+
+            <div class="visual-content">
+
+                <span class="eyebrow">
+                    THE FUTURE OF KENYAN MATCHDAY
+                </span>
+
+                <h1>
+                    DON'T JUST
+                    <span>WATCH.</span>
+                    <br>
+                    BE THERE.
+                </h1>
+
+                <p>
+                    Experience the energy of Kenyan football.
+                    Create your account, discover matches,
+                    and prepare for your next matchday.
+                </p>
+
+                <div class="visual-features">
+                    <span>✓ Football Matches</span>
+                    <span>✓ Instant Tickets</span>
+                    <span>✓ Matchday Experience</span>
+                </div>
+
+            </div>
+
+            <p class="visual-footer">
+                Talanta Stadium — Made for Kenyan football fans 🇰🇪
+            </p>
+
+        </section>
+
+        <!-- AUTHENTICATION PANEL -->
+        <section class="auth-panel">
+
+            <div class="auth-box">
+
+                <a href="index.html" class="brand mobile-brand">
+                    <span class="brand-icon">⚽</span>
+                    <span>Talanta<span>Pass</span></span>
+                </a>
+
+                <a href="index.html" class="back-link">
+                    ← Back to Home
+                </a>
+
+                <div>
+                    <span class="form-eyebrow">
+                        WELCOME TO TALANTA STADIUM
+                    </span>
+
+                    <h2 class="form-heading" id="form-heading">
+                        Welcome Back
+                    </h2>
+
+                    <p class="form-description" id="form-description">
+                        Sign in to access your Talanta Stadium account.
+                    </p>
+                </div>
+
+                <!-- SIGN IN / REGISTER TABS -->
+                <div class="auth-tabs" role="tablist" aria-label="Account access">
+                    <button type="button" class="auth-tab active" id="signin-tab" role="tab" aria-selected="true"
+                        aria-controls="signin-panel">
+                        Sign In
+                    </button>
+
+                    <button type="button" class="auth-tab" id="register-tab" role="tab" aria-selected="false"
+                        aria-controls="register-panel" tabindex="-1">
+                        Create Account
+                    </button>
+                </div>
+
+                <!-- SIGN IN PANEL -->
+                <div id="signin-panel" role="tabpanel" aria-labelledby="signin-tab">
+                    <form id="signin-form" class="auth-form" novalidate>
+
+                        <div id="signin-message" class="form-message" role="alert" hidden></div>
+
+                        <div class="field">
+                            <label for="signin-email">
+                                Email Address
+                            </label>
+
+                            <div class="input-wrap">
+                                <input type="email" id="signin-email" name="email" placeholder="you@example.com"
+                                    autocomplete="email" maxlength="254" required>
+                            </div>
+
+                            <small class="field-error" id="signin-email-error"></small>
+                        </div>
+
+                        <div class="field">
+                            <label for="signin-password">
+                                Password
+                            </label>
+
+                            <div class="input-wrap">
+                                <input type="password" id="signin-password" name="password"
+                                    placeholder="Enter your password" autocomplete="current-password" required>
+
+                                <button type="button" class="toggle-password" data-target="signin-password"
+                                    aria-label="Show password">
+                                    Show
+                                </button>
+                            </div>
+
+                            <small class="field-error" id="signin-password-error"></small>
+                        </div>
+
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="remember-me">
+                            <span>Remember me</span>
+                        </label>
+
+                        <button type="submit" class="submit-btn" id="signin-submit">
+                            Sign In →
+                        </button>
+
+                    </form>
+
+                    <p class="switch-prompt">
+                        Don't have an account?
+                        <button type="button" data-switch="register">
+                            Create Account
+                        </button>
+                    </p>
+                </div>
+
+                <!-- REGISTRATION PANEL -->
+                <div id="register-panel" role="tabpanel" aria-labelledby="register-tab" hidden>
+                    <form id="register-form" class="auth-form" novalidate>
+
+                        <div id="register-message" class="form-message" role="alert" hidden></div>
+
+                        <!-- FULL NAME -->
+                        <div class="field">
+                            <label for="full-name">
+                                Full Name
+                            </label>
+
+                            <div class="input-wrap">
+                                <input type="text" id="full-name" name="fullName" placeholder="Enter your full name"
+                                    autocomplete="name" minlength="2" maxlength="100" required>
+                            </div>
+
+                            <small class="field-error" id="full-name-error"></small>
+                        </div>
+
+                        <!-- EMAIL -->
+                        <div class="field">
+                            <label for="register-email">
+                                Email Address
+                            </label>
+
+                            <div class="input-wrap">
+                                <input type="email" id="register-email" name="email" placeholder="you@example.com"
+                                    autocomplete="email" maxlength="254" required>
+                            </div>
+
+                            <small class="field-error" id="register-email-error"></small>
+                        </div>
+
+                        <!-- PHONE -->
+                        <div class="field">
+                            <label for="phone">
+                                Phone Number
+                            </label>
+
+                            <div class="input-wrap">
+                                <input type="tel" id="phone" name="phone" placeholder="0712 345 678" autocomplete="tel"
+                                    maxlength="20" required>
+                            </div>
+
+                            <small class="field-hint">
+                                Kenyan number: 0712345678 or +254712345678
+                            </small>
+
+                            <small class="field-error" id="phone-error"></small>
+                        </div>
+
+                        <!-- PASSWORD -->
+                        <div class="field">
+                            <label for="register-password">
+                                Password
+                            </label>
+
+                            <div class="input-wrap">
+                                <input type="password" id="register-password" name="password"
+                                    placeholder="Create a password" autocomplete="new-password" minlength="12" required>
+
+                                <button type="button" class="toggle-password" data-target="register-password"
+                                    aria-label="Show password">
+                                    Show
+                                </button>
+                            </div>
+
+                            <small class="field-hint">
+                                Use at least 12 characters.
+                            </small>
+
+                            <small class="field-error" id="register-password-error"></small>
+                        </div>
+
+                        <!-- CONFIRM PASSWORD -->
+                        <div class="field">
+                            <label for="confirm-password">
+                                Confirm Password
+                            </label>
+
+                            <div class="input-wrap">
+                                <input type="password" id="confirm-password" name="confirmPassword"
+                                    placeholder="Re-enter your password" autocomplete="new-password" required>
+
+                                <button type="button" class="toggle-password" data-target="confirm-password"
+                                    aria-label="Show password">
+                                    Show
+                                </button>
+                            </div>
+
+                            <small class="field-error" id="confirm-password-error"></small>
+                        </div>
+
+                        <!-- TERMS -->
+                        <div class="field">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="accept-terms" required>
+
+                                <span>
+                                    I agree to the
+                                    <a href="css/terms.html">Terms of Service</a>
+                                    and
+                                    <a href="css/privacy.html">Privacy Policy</a>.
+                                </span>
+                            </label>
+
+                            <small class="field-error" id="accept-terms-error"></small>
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="register-submit">
+                            Create Account →
+                        </button>
+
+                    </form>
+
+                    <p class="switch-prompt">
+                        Already have an account?
+                        <button type="button" data-switch="signin">
+                            Sign In
+                        </button>
+                    </p>
+                </div>
+
+                <p class="copyright">
+                    &copy; <span id="current-year">2026</span>
+                    Talanta Stadium. All rights reserved.
+                </p>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script src="js/auth.js" defer></script>
+</body>
+
+</html>

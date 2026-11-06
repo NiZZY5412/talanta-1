@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#071C1B">
+    <title>Talanta Stadium | Stadium Administration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css">
+    <script src="js/admin.js" defer></script>
+</head>
+
+<body>
+    <div class="flag-stripe"></div>
+    <section class="admin-access" id="admin-access" aria-labelledby="access-title" hidden>
+        <div class="admin-access-card">
+            <a class="brand" href="index.html">
+                <span class="brand-icon">⬡</span>
+                <span>TALANTA<span class="lime"> STADIUM</span><small>STADIUM ADMINISTRATION</small></span>
+            </a>
+            <p class="eyebrow">SECURE ADMINISTRATION</p>
+            <h1 id="access-title">Sign in to your workspace</h1>
+            <p id="access-description" class="muted">Administrator access is required to manage events.</p>
+            <div id="access-message" class="access-message" role="alert" hidden></div>
+            <form id="admin-login-form" class="access-form" hidden>
+                <label>Email address<input id="login-email" type="email" autocomplete="username" required></label>
+                <label>Password<input id="login-password" type="password" autocomplete="current-password" required></label>
+                <button class="btn primary" type="submit">Sign in</button>
+            </form>
+            <form id="admin-bootstrap-form" class="access-form" hidden>
+                <p class="notice">Set up the first administrator. This one-time setup is available only while no administrator account exists.</p>
+                <label>Full name<input id="bootstrap-name" autocomplete="name" maxlength="120" required></label>
+                <label>Email address<input id="bootstrap-email" type="email" autocomplete="email" maxlength="254" required></label>
+                <label>Password<input id="bootstrap-password" type="password" autocomplete="new-password" minlength="12" maxlength="200" required></label>
+                <small class="muted">Use at least 12 characters. There is no default password.</small>
+                <button class="btn primary" type="submit">Create administrator</button>
+            </form>
+            <a class="customer-link" href="index.html">← Customer website</a>
+        </div>
+    </section>
+
+    <div class="shell" id="admin-workspace" hidden>
+        <aside class="sidebar" id="sidebar">
+            <a class="brand" href="index.html">
+                <span class="brand-icon">⬡</span>
+                <span>TALANTA<span class="lime"> STADIUM</span><small>STADIUM ADMINISTRATION</small></span>
+            </a>
+            <div class="sidebar-label">WORKSPACE</div>
+            <nav id="admin-nav" aria-label="Admin sections">
+                <button class="nav-link active" data-page="overview">▦ <span>Overview</span></button>
+                <button class="nav-link" data-page="events">▣ <span>Events</span></button>
+                <button class="nav-link" data-page="customers">♙ <span>Customers</span></button>
+                <button class="nav-link" data-page="tickets">▤ <span>Tickets</span></button>
+                <button class="nav-link" data-page="payments">▣ <span>Payments</span></button>
+                <button class="nav-link" data-page="revenue">▥ <span>Revenue</span></button>
+                <button class="nav-link" data-page="seating">▦ <span>Seating</span></button>
+                <button class="nav-link" data-page="gate">⌗ <span>Gate Entry</span></button>
+                <button class="nav-link" data-page="staff">♙ <span>Staff & Roles</span></button>
+                <button class="nav-link" data-page="audit">☷ <span>Audit Logs</span></button>
+                <button class="nav-link" data-page="settings">⚙ <span>Settings</span></button>
+                <button class="nav-link" data-page="messages">✉ <span>Messages</span><strong id="admin-message-unread" class="message-unread-badge" hidden></strong></button>
+            </nav>
+            <div class="sidebar-bottom">
+                <strong>ADMINISTRATION</strong>
+                <p>Customer Website</p>
+                <a href="index.html">← Customer Website</a>
+            </div>
+        </aside>
+
+        <div class="main-area">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button id="menu-toggle" class="icon-button" aria-label="Toggle menu">☰</button>
+                    <div>
+                        <strong id="topbar-title">Dashboard Overview</strong>
+                        <small>Talanta Stadium / Administration</small>
+                    </div>
+                </div>
+                <div class="topbar-actions">
+                    <span class="sales-chip"><small>VERIFIED SALES</small><strong id="admin-paid-total">KES 0</strong></span>
+                    <span class="avatar" id="admin-avatar">TP</span>
+                    <span id="admin-name" class="admin-name"></span>
+                    <button id="admin-logout" class="btn subtle small" type="button">Sign out</button>
+                </div>
+            </header>
+
+            <div class="system-banner" id="system-banner" role="status" hidden>
+                <strong>Some services are not connected</strong>
+                <span>Sales availability follows event dates. Payouts require a connected merchant disbursement account.</span>
+            </div>
+
+            <main class="content">
+                <!-- OVERVIEW -->
+                <section class="page active" id="page-overview">
+                    <div class="page-heading">
+                        <div>
+                            <p class="eyebrow">COMMAND CENTER</p>
+                            <h1>Dashboard Overview</h1>
+                            <p>Event management is connected. Operational metrics appear as real system records become available.</p>
+                        </div>
+                    </div>
+                    <div id="kpi-grid" class="kpi-grid"></div>
+
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h2>Ticket Revenue Trend</h2>
+                        </div>
+                        <p class="muted">Revenue totals come from confirmed M-Pesa payments. Payout balances are shown separately from gross sales.</p>
+                    </div>
+                    <div class="two-columns">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h2>Sales by Category</h2>
+                            </div>
+                            <div id="category-bars"></div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h2>Block Sales</h2>
+                            </div>
+                            <div id="block-bars"></div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h2>Latest Transactions</h2>
+                        </div>
+                        <div id="latest-transactions"></div>
+                    </div>
+                </section>
+
+                <!-- EVENTS -->
+                <section class="page" id="page-events">
+                    <div class="page-heading">
+                        <div>
+                            <p class="eyebrow">MATCH OPERATIONS</p>
+                            <h1>Event Management</h1>
+                            <p>Sales Open and Sales Close control customer booking. Allocate tickets by category; use Add available seats in the event list to release more seats when configured stadium capacity remains.</p>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h2 id="event-form-title">Create Event</h2>
+                        <div id="event-message" class="access-message" role="alert" hidden></div>
+                        <form id="event-form" class="form-grid">
+                            <input type="hidden" id="event-id">
+                            <label>Home Team<input id="home-team" required maxlength="80"></label>
+                            <label>Away Team<input id="away-team" required maxlength="80"></label>
+                            <label>Competition<input id="competition" required maxlength="100" value="Football"></label>
+                            <label>Kickoff<input id="kickoff" type="datetime-local" required></label>
+                            <label>Venue<input id="venue" required maxlength="160"></label>
+                            <label>Sales Open<input id="sales-open" type="datetime-local" required></label>
+                            <label>Sales Close<input id="sales-close" type="datetime-local" required></label>
+                            <label>Event Status<select id="event-status">
+                                    <option value="draft">Draft</option>
+                                    <option value="published">Published</option>
+                                    <option value="postponed">Postponed</option>
+                                    <option value="cancelled">Cancelled</option>
+                                </select></label>
+                            <label>Banner URL<input id="event-banner" type="url" maxlength="2000"></label>
+                            <label class="form-wide">Description<textarea id="event-description" rows="3" maxlength="2000"></textarea></label>
+                            <fieldset class="category-editor form-wide">
+                                <legend>Fixed ticket categories and prices · configure seats per category</legend>
+                                <p class="muted">Set each category allocation; combined allocations cannot exceed the capacity configured across the four stadium blocks.</p>
+                                <div id="category-fields"></div>
+                                <p id="allocation-capacity-summary" class="capacity-summary" aria-live="polite"></p>
+                            </fieldset>
+                            <div class="form-actions">
+                                <button id="save-event" class="btn primary" type="submit">Save Event</button>
+                                <button id="cancel-edit" class="btn subtle" type="button" hidden>Cancel edit</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h2>Events</h2><span id="event-count"></span>
+                        </div>
+                        <div id="events-table" class="table-scroll"></div>
+                    </div>
+                </section>
+
+                <!-- CUSTOMERS -->
+                <section class="page" id="page-customers">
+                    <div class="page-heading">
+                        <div>
+                            <p class="eyebrow">ACCOUNT OPERATIONS</p>
+                            <h1>Customers</h1>
+                            <p>Customer accounts, including sales-window booking exceptions, are managed here.</p>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <label class="search-label">Search Customers<input id="customer-search"
+                                placeholder="Search name, email or phone"></label>
+                        <div id="customers-table" class="table-scroll"></div>
+                        <p class="muted">Search returns up to 100 matching customer accounts.</p>
+                    </div>
+                    <div class="panel">
+                        <h2>Grant out-of-window booking access</h2>
+                        <p class="muted">This grants the selected customer a temporary exception to the event sales dates. Ticket allocation and payment checks still apply. Access expires before kickoff.</p>
+                        <form id="booking-override-form" class="form-grid">
+                            <label>Customer email<input id="override-email" type="email" maxlength="254" required></label>
+                            <label>Published event<select id="override-event" required></select></label>
+                            <label>Access duration<select id="override-hours"><option value="1">1 hour</option><option value="6">6 hours</option><option value="12">12 hours</option><option value="24" selected>24 hours</option><option value="48">48 hours</option><option value="72">72 hours</option></select></label>
+                            <div class="form-actions"><button class="btn primary" type="submit">Grant access</button><button id="revoke-override" class="btn subtle" type="button">Revoke access</button></div>
+                        </form>
+                        <div id="override-message" class="access-message" role="status" hidden></div>
+                    </div>
+                    <div class="panel">
+                        <h2>Support Cases</h2>
+                        <div id="support-cases"></div>
+                    </div>
+                </section>
+
+                <!-- CUSTOMER MESSAGES -->
+                <section class="page" id="page-messages">
+                    <div class="page-heading">
+                        <div>
+                            <p class="eyebrow">CUSTOMER SUPPORT</p>
+                            <h1>Customer Messages</h1>
+                            <p>Open any customer account to read and reply in a private support thread.</p>
+                        </div>
+                    </div>
+                    <div class="messages-workspace">
+                        <section class="panel message-inbox">
+                            <label class="search-label" for="admin-message-search">Find a customer<input id="admin-message-search" type="search" maxlength="100" placeholder="Search name, email or phone"></label>
+                            <div id="admin-message-contacts" class="message-contact-list" aria-label="Customer conversations"></div>
+                        </section>
+                        <section class="panel message-thread-panel" aria-label="Selected customer conversation">
+                            <div id="admin-message-contact" class="message-contact-heading">
+                                <h2>Select a customer</h2>
+                                <p class="muted">Search for a customer to start or continue a private conversation.</p>
+                            </div>
+                            <div id="admin-message-thread" class="support-message-list" role="log" aria-live="polite" aria-label="Messages with the selected customer">
+                                <p class="support-empty">No conversation selected.</p>
+                            </div>
+                            <form id="admin-message-form" class="support-compose" hidden>
+                                <label for="admin-message-input">Reply</label>
+                                <textarea id="admin-message-input" maxlength="2000" rows="3" required placeholder="Write a message to this customer"></textarea>
+                                <div class="support-compose-footer">
+                                    <span id="admin-message-status" role="status"></span>
+                                    <button class="btn primary" type="submit">Send reply</button>
+                                </div>
+                                <small>Only the selected customer and administrators can see this conversation.</small>
+                            </form>
+                        </section>
+                    </div>
+                </section>
+
+                <!-- TICKETS -->
+                <section class="page" id="page-tickets">
+                    <div class="page-heading">
+                        <div>
+                            <p class="eyebrow">CONFIDENTIAL RECORDS</p>
+                            <h1>Ticket Management</h1>
+                            <p>Issued ticket records will appear here.</p>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div id="tickets-table" class="table-scroll"></div>
+                    </div>
+                    <div class="notice">Ticket access and changes require server-side permissions and audit logs.</div>
+                </section>
+
+                <!-- PAYMENTS -->
+                <section class="page" id="page-payments">
+                    <div class="page-heading">
+                        <div>
+                            <p class="eyebrow">FINANCIAL OPERATIONS</p>
+                            <h1>Payment Management</h1>
+                            <p>Booking and payment statuses come from customer checkout and Safaricom confirmation callbacks.</p>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="filters">
+                            <input id="payment-search" placeholder="Search reference, customer, phone or receipt">
+                            <select id="provider-filter">
+                                <option value="all">All Providers</option>
+                                <option value="MPESA">M-Pesa</option>
+                            </select>
+                            <select id="payment-status-filter">
+                                <option value="all">All Statuses</option>
+                                <option value="PAID">Paid</option>
+                                <option value="PENDING">Pending</option>
+                                <option value="FAILED">Failed</option>
+                                <option value="LATE_PAYMENT_REFUND_REQUIRED">Refund required</option>
+                            </select>
+                        </div>
+                        <div id="payments-table" class="table-scroll"></div>
+                        <p class="muted">“Paid” means Safaricom payment was verified and ticket issuance was recorded.</p>
+                    </div>
+                    <div class="notice">Manual approval is disabled. Only verified provider or bank reconciliation
+                        evidence may support a real paid order.</div>
+                </section>
+
+                <!-- REVENUE -->
+                <section class="page" id="page-revenue">
+                    <div class="page-heading">
+                        <div>
+                            <p class="eyebrow">FINANCIAL INTELLIGENCE</p>
+                            <h1>Revenue & Withdrawals</h1>
+                            <p>Confirmed M-Pesa collections are totaled from verified payments. M-Pesa withdrawals are limited to paid sales and funds confirmed in the B2C utility account.</p>
+                        </div>
+                    </div>
+                    <div id="revenue-grid" class="kpi-grid"></div>
+                    <div class="panel">
+                        <div class="panel-heading"><h2>Withdrawable balance</h2><strong id="withdrawable-balance">Not connected</strong></div>
+                        <p id="withdrawal-status" class="muted">Refresh the B2C utility balance before requesting a payout.</p>
+                        <button id="refresh-b2c-balance" class="btn subtle" type="button">Refresh M-Pesa balance</button>
+                        <form id="mpesa-withdrawal-form" class="form-grid">
+                            <label>M-Pesa recipient phone<input id="withdrawal-phone" type="tel" inputmode="tel" placeholder="0712 345 678" required></label>
+                            <div class="form-actions"><button id="withdraw-button" class="btn primary" type="submit" disabled>Withdraw available amount</button></div>
+                        </form>
+                        <div id="revenue-message" class="access-message" role="status" hidden></div>
+                    </div>
+                    <div class="panel"><h2>Recent M-Pesa operations</h2><div id="payout-history" class="table-scroll"></div></div>
+                    <div class="two-columns">
+                        <div class="panel">
+                            <h2>Revenue by Provider</h2>
+                            <div id="provider-bars"></div>
+                        </div>
+                        <div class="panel">
+                            <h2>Revenue by Category</h2>
+                            <div id="revenue-category-bars"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SEATING -->
+                <section class="page" id="page-seating">
+                    <div class="page-heading">
+                        <div>
+                            <p class="eyebrow">STADIUM OPERATIONS</p>
+                            <h1>Seating Management</h1>
+                            <p>Configure the four stadium blocks. Total configured seating may not exceed 60,000.</p>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h2>Stadium Capacity</h2><strong id="capacity-total">Loading…</strong>
+                        </div>
+                        <div class="capacity-track">
+                            <div id="capacity-fill"></div>
+                        </div>
+                        <p id="capacity-summary" class="muted">Block capacities are configured here. Current ticket sales remain category-based.</p>
+                    </div>
+                    <form id="stadium-block-form" class="panel">
+                        <div id="block-grid" class="block-grid"></div>
+                        <div class="form-actions"><button class="btn primary" type="submit">Save block capacities</button></div>
+                        <div id="stadium-block-message" class="access-message" role="status" hidden></div>
+                    </form>
+                </section>
+
+                <!-- GATE -->
+                <section class="page" id="page-gate">
+                    <div class="page-heading">
+                        <div>
+                            <p class="eyebrow">ADMISSION OPERATIONS</p>
+                            <h1>Gate Entry</h1>
+                            <p>Gate verification is unavailable until ticket services are connected.</p>
+                        </div>
+                    </div>
+                    <div class="panel gate-panel">
+                        <p class="muted">No gate entry can be verified at this time.</p>
+                    </div>
+                </section>
+
+                <!-- STAFF -->
+                <section class="page" id="page-staff">
+                    <div class="page-heading">
+                        <div>
+                            <p class="eyebrow">ACCESS CONTROL</p>
+                            <h1>Staff & Roles</h1>
+                            <p>Staff access will be managed through secure server-side permissions.</p>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h2>Defined Roles</h2>
+                        <div id="roles-table" class="table-scroll"></div>
+                    </div>
+                    <div class="notice">Staff and permission records are not available.</div>
+                </section>
+
+                <!-- AUDIT -->
+                <section class="page" id="page-audit">
+                    <div class="page-heading">
+                        <div>
+                            <p class="eyebrow">ACCOUNTABILITY</p>
+                            <h1>Audit Logs</h1>
+                            <p>Recorded administrator changes, including stadium capacity updates.</p>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <div id="audit-table" class="table-scroll"></div>
+                    </div>
+                </section>
+
+                <!-- SETTINGS -->
+                <section class="page" id="page-settings">
+                    <div class="page-heading">
+                        <div>
+                            <p class="eyebrow">CONFIGURATION</p>
+                            <h1>Settings</h1>
+                            <p>Workspace preferences.</p>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h2>Appearance</h2>
+                        <div class="form-actions"><button id="theme-toggle" class="btn subtle">Toggle Light / Dark
+                                Mode</button>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h2>Production Integrations</h2>
+                        <p class="muted">M-Pesa, Airtel Money, approved banks, email, SMS, storage and audit monitoring
+                            will be configured through protected server-side settings. No secrets belong in frontend
+                            JavaScript.</p>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+</body>
+
+</html>

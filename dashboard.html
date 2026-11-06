@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101010">
+
+    <title>My Dashboard | Talanta Stadium</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="css/js/dashboard.js" defer></script>
+</head>
+
+<body>
+
+    <!-- KENYAN FLAG ACCENT -->
+    <div class="flag-stripe" aria-hidden="true"></div>
+
+    <!-- MOBILE HEADER -->
+    <header class="mobile-header">
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open dashboard menu"
+            aria-controls="dashboard-sidebar" aria-expanded="false">
+            ☰
+        </button>
+
+        <a href="index.html" class="brand">
+            <span class="brand-star">★</span>
+            TALANTA<span> STADIUM</span>
+        </a>
+    </header>
+
+    <div class="dashboard-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="dashboard-sidebar">
+
+            <a href="index.html" class="brand sidebar-brand">
+                <span class="brand-star">★</span>
+                TALANTA<span> STADIUM</span>
+            </a>
+
+            <div class="sidebar-label">FAN PORTAL</div>
+
+            <nav class="sidebar-nav" aria-label="Dashboard navigation">
+
+                <a href="#overview" class="nav-item active" data-section="overview">
+                    <span class="nav-icon">▦</span>
+                    Overview
+                </a>
+
+                <a href="#tickets" class="nav-item" data-section="tickets">
+                    <span class="nav-icon">▤</span>
+                    My Tickets
+                </a>
+
+                <a href="#bookings" class="nav-item" data-section="bookings">
+                    <span class="nav-icon">◷</span>
+                    Booking History
+                </a>
+
+                <a href="#messages" class="nav-item" data-section="messages">
+                    <span class="nav-icon">✉</span>
+                    Messages
+                </a>
+
+                <a href="#profile" class="nav-item" data-section="profile">
+                    <span class="nav-icon">◉</span>
+                    My Profile
+                </a>
+
+                <div class="nav-divider"></div>
+
+                <a href="index.html#matches" class="nav-item">
+                    <span class="nav-icon">⚽</span>
+                    Explore Matches
+                </a>
+
+                <a href="index.html" class="nav-item">
+                    <span class="nav-icon">⌂</span>
+                    Back to Home
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-user">
+                    <div class="user-avatar" id="sidebar-avatar">—</div>
+
+                    <div>
+                        <strong id="sidebar-name"></strong>
+                        <small>Customer account</small>
+                    </div>
+                </div>
+
+                <button class="logout-button" id="logout-button" type="button">
+                    <span>↪</span>
+                    Sign Out
+                </button>
+
+                <p class="sidebar-footer">
+                    DON'T JUST WATCH. BE THERE.
+                </p>
+
+            </div>
+
+        </aside>
+
+        <!-- MOBILE SIDEBAR OVERLAY -->
+        <button type="button" class="sidebar-overlay" id="sidebar-overlay" aria-label="Close dashboard menu">
+        </button>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+            <div class="topbar">
+
+                <div class="breadcrumb">
+                    TALANTA STADIUM
+                    <span>/</span>
+                    FAN DASHBOARD
+                </div>
+
+                <div class="topbar-actions">
+                    <div class="topbar-avatar" id="topbar-avatar">
+                        —
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- OVERVIEW -->
+            <section class="dashboard-section active" id="overview">
+
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">
+                            YOUR MATCHDAY STARTS HERE
+                        </p>
+
+                        <h1>Your Matchday Account</h1>
+
+                        <p class="page-subtitle">
+                            Here's your football experience
+                            at a glance.
+                        </p>
+                    </div>
+
+                    <a href="index.html#matches" class="btn btn-primary">
+                        Explore Matches <span>↗</span>
+                    </a>
+                </div>
+
+                <div class="account-notice" role="status" id="account-notice">
+                    <span>ⓘ</span>
+                    <p>
+                        Account services are not connected. Sign in once customer account services are available.
+                    </p>
+                </div>
+
+                <!-- STATS -->
+                <div class="stats-grid">
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span>Total Bookings</span>
+                            <span class="stat-icon">▤</span>
+                        </div>
+
+                        <strong id="stat-bookings">—</strong>
+
+                        <small>Bookings on your account</small>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span>Upcoming Tickets</span>
+                            <span class="stat-icon">⚽</span>
+                        </div>
+
+                        <strong id="stat-upcoming">—</strong>
+
+                        <small>Upcoming event tickets</small>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span>Completed Matches</span>
+                            <span class="stat-icon">✓</span>
+                        </div>
+
+                        <strong id="stat-completed">—</strong>
+
+                        <small>Past event tickets</small>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-top">
+                            <span>Total Spent</span>
+                            <span class="stat-icon">◈</span>
+                        </div>
+
+                        <strong id="stat-spent">—</strong>
+
+                        <small>Confirmed payments</small>
+                    </article>
+
+                </div>
+
+                <!-- HERO BANNER -->
+                <div class="dashboard-banner">
+                    <div class="banner-content">
+
+                        <span class="banner-eyebrow">
+                            THE STADIUM IS CALLING
+                        </span>
+
+                        <h2>
+                            DON'T JUST WATCH.
+                            <br>
+                            <span>BE THERE.</span>
+                        </h2>
+
+                        <p>
+                            Discover upcoming football matches
+                            and get ready for an unforgettable
+                            matchday experience.
+                        </p>
+
+                        <a href="index.html#matches" class="btn btn-primary">
+                            Find Your Next Match ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- OVERVIEW CONTENT -->
+                <div class="content-grid">
+
+                    <div class="panel">
+
+                        <div class="panel-heading">
+                            <div>
+                                <p class="eyebrow">
+                                    MATCHDAY READY
+                                </p>
+                                <h2>Upcoming Tickets</h2>
+                            </div>
+
+                            <a href="#tickets" class="text-link" data-section="tickets">
+                                View All →
+                            </a>
+                        </div>
+
+                        <div id="overview-tickets"></div>
+
+                    </div>
+
+                    <div class="panel">
+
+                        <div class="panel-heading">
+                            <div>
+                                <p class="eyebrow">
+                                    YOUR ACTIVITY
+                                </p>
+                                <h2>Recent Bookings</h2>
+                            </div>
+
+                            <a href="#bookings" class="text-link" data-section="bookings">
+                                View All →
+                            </a>
+                        </div>
+
+                        <div id="recent-bookings"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- MY TICKETS -->
+            <section class="dashboard-section" id="tickets">
+
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">YOUR MATCHDAY PASSES</p>
+                        <h1>My Tickets</h1>
+                        <p class="page-subtitle">
+                            Review your upcoming and past
+                            tickets.
+                        </p>
+                    </div>
+                    <a href="css/js/css/js/css/js/css/js/my-tickets.html" class="btn btn-primary">
+                        Open Ticket History <span>↗</span>
+                    </a>
+                </div>
+
+                <div class="section-toolbar">
+                    <div class="filter-group" aria-label="Ticket filters">
+
+                        <button type="button" class="filter-btn active" data-ticket-filter="all">
+                            All Tickets
+                        </button>
+
+                        <button type="button" class="filter-btn" data-ticket-filter="upcoming">
+                            Upcoming
+                        </button>
+
+                        <button type="button" class="filter-btn" data-ticket-filter="past">
+                            Past
+                        </button>
+
+                    </div>
+                </div>
+
+                <div class="ticket-grid" id="tickets-list">
+                </div>
+
+            </section>
+
+            <!-- BOOKING HISTORY -->
+            <section class="dashboard-section" id="bookings">
+
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">YOUR ACTIVITY</p>
+                        <h1>Booking History</h1>
+                        <p class="page-subtitle">
+                            A record of your ticket bookings.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="table-scroll">
+                        <table class="booking-table">
+                            <thead>
+                                <tr>
+                                    <th>Booking</th>
+                                    <th>Match</th>
+                                    <th>Category</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="booking-table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- CUSTOMER SUPPORT MESSAGES -->
+            <section class="dashboard-section" id="messages">
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">CUSTOMER SUPPORT</p>
+                        <h1>Messages</h1>
+                        <p class="page-subtitle">Send a private message to the Talanta Stadium admin and see replies here.</p>
+                    </div>
+                </div>
+                <div class="panel support-chat-panel">
+                    <div id="customer-message-list" class="support-message-list" role="log" aria-live="polite" aria-label="Messages with customer support">
+                        <p class="support-empty">Loading your conversation…</p>
+                    </div>
+                    <form id="customer-message-form" class="support-compose">
+                        <label for="customer-message-input">Your message</label>
+                        <textarea id="customer-message-input" maxlength="2000" rows="3" required placeholder="How can we help?"></textarea>
+                        <div class="support-compose-footer">
+                            <span id="customer-message-status" role="status"></span>
+                            <button class="btn btn-primary" type="submit">Send message</button>
+                        </div>
+                        <small>Messages are private to you and the admin. Up to 2,000 characters.</small>
+                    </form>
+                </div>
+            </section>
+
+            <!-- PROFILE -->
+            <section class="dashboard-section" id="profile">
+
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">YOUR ACCOUNT</p>
+                        <h1>My Profile</h1>
+                        <p class="page-subtitle">
+                            View and update your account information.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="profile-layout">
+
+                    <div class="panel profile-summary">
+
+                        <div class="profile-avatar" id="profile-avatar">—</div>
+
+                        <h2 id="profile-display-name">
+                        </h2>
+
+                        <p id="profile-display-email"></p>
+
+                        <span class="profile-tag">
+                            FOOTBALL SUPPORTER
+                        </span>
+
+                        <p class="profile-hint" id="profile-hint">
+                            Account services are not connected.
+                        </p>
+
+                    </div>
+
+                    <div class="panel">
+
+                        <div class="panel-heading">
+                            <div>
+                                <p class="eyebrow">
+                                    ACCOUNT DETAILS
+                                </p>
+                                <h2>Personal Information</h2>
+                            </div>
+                        </div>
+
+                        <form id="profile-form">
+
+                            <div class="form-grid">
+
+                                <div class="form-field">
+                                    <label for="profile-first-name">
+                                        First Name
+                                    </label>
+
+                                    <input id="profile-first-name" name="firstName" type="text"
+                                        autocomplete="given-name" maxlength="60" required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="profile-last-name">
+                                        Last Name
+                                    </label>
+
+                                    <input id="profile-last-name" name="lastName" type="text" autocomplete="family-name"
+                                        maxlength="60" required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="profile-email">
+                                        Email Address
+                                    </label>
+
+                                    <input id="profile-email" name="email" type="email" autocomplete="email" readonly required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="profile-phone">
+                                        Phone Number
+                                    </label>
+
+                                    <input id="profile-phone" name="phone" type="tel" autocomplete="tel" readonly
+                                        placeholder="+254 7XX XXX XXX">
+                                </div>
+
+                            </div>
+
+                            <p class="form-hint">Email and phone are read-only until contact verification is connected.</p>
+                            <p id="profile-message" class="form-message" role="status" aria-live="polite"></p>
+
+                            <button type="submit" class="btn btn-primary">
+                                Save Changes →
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="dashboard-footer">
+                <p>
+                    © <span id="current-year">2026</span>
+                    Talanta Stadium. All rights reserved.
+                </p>
+
+                <div>
+                    <a href="css/terms.html">Terms of Service</a>
+                    <a href="css/privacy.html">Privacy Policy</a>
+                </div>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <dialog id="ticket-dialog" class="ticket-dialog">
+
+        <div class="dialog-heading">
+            <div>
+                <p class="eyebrow">TALANTA STADIUM TICKET</p>
+                <h2>Ticket Details</h2>
+            </div>
+
+            <button type="button" class="dialog-close" id="close-ticket-dialog" aria-label="Close ticket details">
+                ×
+            </button>
+        </div>
+
+        <div id="ticket-dialog-content"></div>
+
+        <button type="button" class="btn btn-secondary" id="dialog-done">
+            Close
+        </button>
+
+    </dialog>
+
+</body>
+
+</html>

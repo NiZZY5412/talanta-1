@@ -1,0 +1,12 @@
+/data/*.sqlite
+/data/*.sqlite-shm
+/data/*.sqlite-wal
+/.env
+/.env.*
+!/.env.example
+/backend/.env
+/backend/.venv/
+/backend/__pycache__/
+/backend/**/__pycache__/
+/backend/.pytest_cache/
+/backend/private_documents/

@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#101010">
+
+    <meta name="description"
+        content="Talanta Stadium — Don't Just Watch. Be There. Discover football matches, explore ticket categories and experience football live in Kenya.">
+
+    <title>Talanta Stadium | Don't Just Watch. Be There.</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- STADIUM IMAGE -->
+    <link rel="preload" as="image" href="talanta-stadium.png">
+
+    <!-- MAIN JAVASCRIPT -->
+    <script src="js/main.js" defer></script>
+
+</head>
+
+<body>
+
+    <!-- ========================================
+         KENYAN FLAG ACCENT
+    ========================================= -->
+
+    <div class="flag-stripe" aria-hidden="true"></div>
+
+
+    <!-- ========================================
+         HEADER / NAVIGATION
+    ========================================= -->
+
+    <header class="site-header">
+
+        <div class="container navbar">
+
+            <!-- BRAND -->
+            <a href="index.html" class="brand" aria-label="Talanta Stadium Home">
+
+                <span class="brand-symbol" aria-hidden="true">
+                    ★
+                </span>
+
+                <span class="brand-name">
+                    TALANTA<span> STADIUM</span>
+                </span>
+
+            </a>
+
+
+            <!-- NAVIGATION LINKS -->
+            <nav class="nav-links" id="primary-navigation" aria-label="Main navigation">
+
+                <a href="#home" class="nav-link">
+                    Home
+                </a>
+
+                <a href="#matches" class="nav-link">
+                    Matches
+                </a>
+
+                <a href="#pricing" class="nav-link">
+                    Ticket Pricing
+                </a>
+
+                <a href="#how-it-works" class="nav-link">
+                    How It Works
+                </a>
+
+            </nav>
+
+
+            <!-- HEADER ACTIONS -->
+            <div class="nav-actions">
+
+                <!-- SIGN IN -->
+                <a href="login.html#signin" class="btn btn-ghost nav-signin">
+                    Sign In
+                </a>
+
+                <!-- CREATE ACCOUNT -->
+                <a href="login.html#register" class="btn btn-primary nav-book">
+                    Create Account
+                </a>
+
+                <!-- MOBILE MENU -->
+                <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Open navigation menu"
+                    aria-controls="primary-navigation" aria-expanded="false">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- ========================================
+             HERO SECTION
+        ========================================= -->
+
+        <section class="hero-section" id="home" aria-labelledby="hero-heading" style="
+                background-image:
+                    linear-gradient(
+                        90deg,
+                        rgba(0,0,0,0.93) 0%,
+                        rgba(0,0,0,0.76) 35%,
+                        rgba(0,25,15,0.43) 70%,
+                        rgba(0,0,0,0.20) 100%
+                    ),
+                    url('talanta-stadium.png');
+
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            ">
+
+            <div class="hero-glow" aria-hidden="true"></div>
+
+            <div class="container hero-grid">
+
+                <!-- HERO CONTENT -->
+                <div class="hero-content">
+
+                    <div class="hero-eyebrow">
+
+                        <span class="eyebrow-dot" aria-hidden="true"></span>
+
+                        THE FUTURE OF KENYAN MATCHDAY
+
+                    </div>
+
+
+                    <h1 id="hero-heading">
+
+                        DON'T JUST
+
+                        <span class="hero-highlight">
+                            WATCH.
+                        </span>
+
+                        <br>
+
+                        BE THERE<span class="hero-period">.</span>
+
+                    </h1>
+
+
+                    <p class="hero-description">
+
+                        Feel the energy. Hear the roar.
+                        Experience every unforgettable moment.
+
+                        Discover football events, find your seat
+                        and be part of the action with Talanta Stadium.
+
+                    </p>
+
+
+                    <div class="hero-actions">
+
+                        <!-- EXPLORE MATCHES -->
+                        <a href="#matches" class="btn btn-primary btn-large">
+
+                            Explore Matches
+
+                            <span aria-hidden="true">↗</span>
+
+                        </a>
+
+                        <!-- CREATE ACCOUNT -->
+                        <a href="login.html#register" class="btn btn-outline-light btn-large">
+
+                            Join Talanta Stadium
+
+                            <span aria-hidden="true">→</span>
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- TRUST INDICATORS -->
+                    <div class="hero-trust">
+
+                        <span>
+                            <span aria-hidden="true">✓</span>
+                            Secure Payments
+                        </span>
+
+                        <span>
+                            <span aria-hidden="true">✓</span>
+                            Instant Tickets
+                        </span>
+
+                        <span>
+                            <span aria-hidden="true">✓</span>
+                            Mobile Friendly
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STADIUM ILLUSTRATION -->
+                <div class="hero-visual">
+
+                    <div class="stadium-orbit orbit-one"></div>
+
+                    <div class="stadium-orbit orbit-two"></div>
+
+
+                    <div class="stadium-illustration" role="img"
+                        aria-label="Illustration of a football stadium with a green football pitch">
+
+                        <div class="stadium-seating">
+
+                            <div class="stadium-track">
+
+                                <div class="football-pitch">
+
+                                    <div class="pitch-halfway"></div>
+
+                                    <div class="pitch-circle"></div>
+
+                                    <div class="penalty-area penalty-left">
+                                        <div class="goal-area"></div>
+                                    </div>
+
+                                    <div class="penalty-area penalty-right">
+                                        <div class="goal-area"></div>
+                                    </div>
+
+                                    <div class="pitch-spot"></div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FLOATING BADGE -->
+                    <div class="stadium-floating-label">
+
+                        <span class="floating-dot"></span>
+
+                        THE HOME OF FOOTBALL
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-bottom-accent"></div>
+
+        </section>
+
+
+        <!-- ========================================
+             UPCOMING MATCHES
+             ADMIN-CONTROLLED EVENTS
+        ========================================= -->
+
+        <section class="section matches-section" id="matches" aria-labelledby="matches-heading">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p class="section-eyebrow">
+                            THE ACTION STARTS HERE
+                        </p>
+
+                        <h2 class="section-title" id="matches-heading">
+
+                            Upcoming Matches
+
+                            <span class="title-arrow">↗</span>
+
+                        </h2>
+
+                        <p class="section-description">
+
+                            Find your next unforgettable football
+                            experience. Choose a match and
+                            secure your place in the stadium.
+
+                        </p>
+
+                    </div>
+
+
+                    <a href="#matches" class="section-link">
+
+                        Explore Events
+
+                        <span aria-hidden="true">→</span>
+
+                    </a>
+
+                </div>
+
+
+                <!--
+                    ADMIN-MANAGED MATCHES
+
+                    Matches must not be hardcoded here.
+
+                    The backend will provide published
+                    upcoming events using:
+
+                    GET /api/events
+
+                    js/main.js will populate:
+
+                    #matches-container
+                -->
+
+
+                <div class="matches-grid" id="matches-container" aria-live="polite" aria-busy="false">
+
+                    <div class="matches-empty" id="matches-empty">
+
+                        <div class="empty-icon" aria-hidden="true">
+                            ⚽
+                        </div>
+
+                        <h3>
+                            Matches Coming Soon
+                        </h3>
+
+                        <p>
+
+                            Upcoming football events will appear
+                            here once they are published by
+                            the Talanta Stadium administration team.
+
+                        </p>
+
+                        <span class="empty-label">
+                            STAY READY FOR MATCHDAY
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LOADING TEMPLATE -->
+                <template id="matches-loading-template">
+
+                    <div class="matches-empty">
+
+                        <div class="loading-spinner" aria-hidden="true"></div>
+
+                        <h3>
+                            Loading Matches
+                        </h3>
+
+                        <p>
+                            Fetching upcoming football events...
+                        </p>
+
+                    </div>
+
+                </template>
+
+
+                <!-- ERROR TEMPLATE -->
+                <template id="matches-error-template">
+
+                    <div class="matches-empty">
+
+                        <div class="empty-icon" aria-hidden="true">
+                            ⚠
+                        </div>
+
+                        <h3>
+                            Unable to Load Matches
+                        </h3>
+
+                        <p>
+                            Match information is temporarily
+                            unavailable. Please try again later.
+                        </p>
+
+                        <button type="button" class="btn btn-secondary" id="retry-matches">
+
+                            Try Again
+
+                        </button>
+
+                    </div>
+
+                </template>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             TICKET PRICING
+        ========================================= -->
+
+        <section class="section pricing-section" id="pricing" aria-labelledby="pricing-heading">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p class="section-eyebrow">
+                            YOUR GAME. YOUR EXPERIENCE.
+                        </p>
+
+                        <h2 class="section-title" id="pricing-heading">
+
+                            Choose Your Experience
+
+                        </h2>
+
+                        <p class="section-description">
+
+                            Every fan deserves a great matchday.
+                            Explore our three ticket categories.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="pricing-grid">
+
+                    <!-- REGULAR TICKET -->
+                    <article class="pricing-card">
+
+                        <div class="pricing-card-top">
+
+                            <div class="pricing-icon" aria-hidden="true">
+                                ⚽
+                            </div>
+
+                            <span class="pricing-type">
+                                STANDARD EXPERIENCE
+                            </span>
+
+                        </div>
+
+
+                        <h3 class="pricing-name">
+                            Regular
+                        </h3>
+
+
+                        <div class="pricing-price">
+
+                            <span class="amount">
+                                Event pricing
+                            </span>
+
+                        </div>
+
+
+                        <p class="pricing-description">
+
+                            Feel the excitement of live football
+                            and enjoy the atmosphere with
+                            thousands of passionate supporters.
+
+                        </p>
+
+
+                        <ul class="pricing-features">
+
+                            <li>Match admission</li>
+
+                            <li>Eligible regular seating</li>
+
+                            <li>Secure PDF ticket</li>
+
+                        </ul>
+
+
+                        <a href="#matches" class="btn btn-secondary pricing-button">
+
+                            Explore Matches
+
+                            <span aria-hidden="true">→</span>
+
+                        </a>
+
+                    </article>
+
+
+                    <!-- VIP TICKET -->
+                    <article class="pricing-card pricing-featured">
+
+                        <div class="popular-badge">
+                            POPULAR CATEGORY
+                        </div>
+
+
+                        <div class="pricing-card-top">
+
+                            <div class="pricing-icon" aria-hidden="true">
+                                ★
+                            </div>
+
+                            <span class="pricing-type">
+                                PREMIUM EXPERIENCE
+                            </span>
+
+                        </div>
+
+
+                        <h3 class="pricing-name">
+                            VIP
+                        </h3>
+
+
+                        <div class="pricing-price">
+
+                            <span class="amount">
+                                Event pricing
+                            </span>
+
+                        </div>
+
+
+                        <p class="pricing-description">
+
+                            Upgrade your matchday with
+                            a premium ticket category
+                            and a memorable stadium experience.
+
+                        </p>
+
+
+                        <ul class="pricing-features">
+
+                            <li>Match admission</li>
+
+                            <li>Eligible VIP seating</li>
+
+                            <li>Secure PDF ticket</li>
+
+                        </ul>
+
+
+                        <a href="#matches" class="btn btn-primary pricing-button">
+
+                            Explore Matches
+
+                            <span aria-hidden="true">→</span>
+
+                        </a>
+
+                    </article>
+
+
+                    <!-- VVIP TICKET -->
+                    <article class="pricing-card">
+
+                        <div class="pricing-card-top">
+
+                            <div class="pricing-icon" aria-hidden="true">
+                                ♛
+                            </div>
+
+                            <span class="pricing-type">
+                                ELITE EXPERIENCE
+                            </span>
+
+                        </div>
+
+
+                        <h3 class="pricing-name">
+                            VVIP
+                        </h3>
+
+
+                        <div class="pricing-price">
+
+                            <span class="amount">
+                                Event pricing
+                            </span>
+
+                        </div>
+
+
+                        <p class="pricing-description">
+
+                            Experience football through
+                            our highest ticket category,
+                            designed for special matchdays.
+
+                        </p>
+
+
+                        <ul class="pricing-features">
+
+                            <li>Match admission</li>
+
+                            <li>Eligible VVIP seating</li>
+
+                            <li>Secure PDF ticket</li>
+
+                        </ul>
+
+
+                        <a href="#matches" class="btn btn-secondary pricing-button">
+
+                            Explore Matches
+
+                            <span aria-hidden="true">→</span>
+
+                        </a>
+
+                    </article>
+
+                </div>
+
+
+                <p class="pricing-disclaimer">
+
+                    Ticket prices shown are proposed defaults.
+                    Actual seating allocations, category benefits,
+                    availability and fees depend on the
+                    published event configuration.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             HOW IT WORKS
+        ========================================= -->
+
+        <section class="section process-section" id="how-it-works" aria-labelledby="process-heading">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <p class="section-eyebrow">
+                            FAST. SIMPLE. SECURE.
+                        </p>
+
+                        <h2 class="section-title" id="process-heading">
+
+                            From Booking to Kickoff
+
+                        </h2>
+
+                        <p class="section-description">
+
+                            Your journey from choosing a match
+                            to entering the stadium in four
+                            simple steps.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="process-grid">
+
+                    <!-- STEP 1 -->
+                    <article class="process-card">
+
+                        <span class="process-number">
+                            01 /
+                        </span>
+
+                        <div class="process-icon" aria-hidden="true">
+                            ⚽
+                        </div>
+
+                        <h3>
+                            Choose a Match
+                        </h3>
+
+                        <p>
+
+                            Browse upcoming matches published
+                            by the administrator and select
+                            the event you want to attend.
+
+                        </p>
+
+                    </article>
+
+
+                    <!-- STEP 2 -->
+                    <article class="process-card">
+
+                        <span class="process-number">
+                            02 /
+                        </span>
+
+                        <div class="process-icon" aria-hidden="true">
+                            ◈
+                        </div>
+
+                        <h3>
+                            Pick Your Seat
+                        </h3>
+
+                        <p>
+
+                            Select your ticket category,
+                            stadium block and an available
+                            seat for the event.
+
+                        </p>
+
+                    </article>
+
+
+                    <!-- STEP 3 -->
+                    <article class="process-card">
+
+                        <span class="process-number">
+                            03 /
+                        </span>
+
+                        <div class="process-icon" aria-hidden="true">
+                            ◉
+                        </div>
+
+                        <h3>
+                            Pay Securely
+                        </h3>
+
+                        <p>
+
+                            Complete payment using an
+                            available approved mobile money,
+                            bank or e-wallet option.
+
+                        </p>
+
+                    </article>
+
+
+                    <!-- STEP 4 -->
+                    <article class="process-card">
+
+                        <span class="process-number">
+                            04 /
+                        </span>
+
+                        <div class="process-icon" aria-hidden="true">
+                            ▤
+                        </div>
+
+                        <h3>
+                            Download Your PDF
+                        </h3>
+
+                        <p>
+
+                            After verified payment,
+                            download your protected PDF
+                            with its unique admission number.
+
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             FINAL CALL TO ACTION
+        ========================================= -->
+
+        <section class="final-cta" aria-labelledby="cta-heading">
+
+            <div class="container cta-content">
+
+                <p class="cta-eyebrow">
+                    YOUR SEAT IS CALLING
+                </p>
+
+
+                <h2 id="cta-heading">
+
+                    DON'T JUST WATCH.
+
+                    <br>
+
+                    <span>BE THERE.</span>
+
+                </h2>
+
+
+                <p class="cta-description">
+
+                    Because the greatest football moments
+                    aren't just watched.
+
+                    They're experienced.
+
+                </p>
+
+
+                <!-- CREATE ACCOUNT -->
+                <a href="login.html#register" class="btn btn-primary btn-large">
+
+                    Join Talanta Stadium
+
+                    <span aria-hidden="true">↗</span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ========================================
+         FOOTER
+    ========================================= -->
+
+    <footer class="site-footer">
+
+        <div class="container footer-main">
+
+            <!-- FOOTER BRAND -->
+            <div class="footer-brand">
+
+                <a href="index.html" class="brand" aria-label="Talanta Stadium Home">
+
+                    <span class="brand-symbol" aria-hidden="true">
+                        ★
+                    </span>
+
+                    <span class="brand-name">
+                        TALANTA<span> STADIUM</span>
+                    </span>
+
+                </a>
+
+
+                <p>
+                    Don't Just Watch. Be There.
+                </p>
+
+                <p class="footer-note">
+                    Talanta Stadium concept platform.
+                    Not an official live booking service.
+                </p>
+
+            </div>
+
+
+            <!-- QUICK LINKS -->
+            <div class="footer-navigation">
+
+                <h3>Quick Links</h3>
+
+                <a href="#home">
+                    Home
+                </a>
+
+                <a href="#matches">
+                    Matches
+                </a>
+
+                <a href="#pricing">
+                    Ticket Pricing
+                </a>
+
+                <a href="#how-it-works">
+                    How It Works
+                </a>
+
+            </div>
+
+
+            <!-- ========================================
+                 YOUR ACCOUNT & LEGAL LINKS
+            ========================================= -->
+
+            <div class="footer-navigation">
+
+                <h3>Your Account</h3>
+
+                <!-- SIGN IN -->
+                <a href="./login.html#signin">
+                    Sign In
+                </a>
+
+                <!-- CREATE ACCOUNT -->
+                <a href="./login.html#register">
+                    Create Account
+                </a>
+
+                <!-- TERMS OF SERVICE -->
+                <a href="./css/terms.html">
+                    Terms of Service
+                </a>
+
+                <!-- PRIVACY POLICY -->
+                <a href="./css/privacy.html">
+                    Privacy Policy
+                </a>
+                <a href="./admin.html">Administration</a>
+
+            </div>
+
+        </div>
+
+
+        <!-- FOOTER BOTTOM -->
+        <div class="container footer-bottom">
+
+            <p>
+                © <span id="current-year">2026</span>
+                Talanta Stadium. All rights reserved.
+            </p>
+
+            <p>
+                Designed for the Kenyan football experience.
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
